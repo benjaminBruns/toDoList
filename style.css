@@ -1,0 +1,122 @@
+:root {
+  --primary-color: #475569;
+  --secondary-color: #0D9488;
+  --accent-color: #F59E0B;
+  --neutral-color: #F1F5F9;
+  --text-color: #1E293B;
+  --light-color: #94A0B8;
+  --cross-color: #EF4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Times New Roman, Arial, sans-serif;
+    background-color: var(--neutral-color);
+}
+
+h1 {
+    margin: 1.25rem;
+    font-size: 3rem;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+#taskInputForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.25rem;
+}
+
+#taskInput {
+    padding: 0.5rem;
+    width: 25rem;
+    background-color: #FFFFFF;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-left: none;
+}
+
+#taskInput:hover {
+    background-color: var(--neutral-color);
+}
+
+#taskInput:focus {
+    background-color: var(--neutral-color);
+}
+
+#taskAddButton {
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    background-color: #FFFFFF;
+    color: var(--secondary-color);
+    border: 1px solid var(--text-color);
+}
+
+#taskAddButton:hover {
+    background-color: var(--neutral-color);
+}
+
+#taskListContainer {
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--text-color);
+    /* width: 45%; */
+    background-color: #FFFFFF;
+}
+
+.taskListItem {
+    border-bottom: 0.5px solid var(--light-color);
+    padding: 0.5rem;
+}
+
+.taskListItem:hover {
+    background-color: var(--neutral-color);
+}
+
+.taskListItem:last-child {
+    border-bottom: none;
+}
+
+.taskCheckbox {
+    margin: 0.5rem;
+}
+
+.taskText {
+    color: var(--text-color);
+}
+
+.taskListItem.completed .taskText {
+    text-decoration: line-through;
+    color: var(--cross-color);
+}
+
+#clearCompletedTasksContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#clearCompletedTasksButton {
+    margin: 1.5rem;
+    margin-top: 0;
+    padding: 0.5rem;
+    background-color: #FFFFFF;
+    border: 1px solid var(--text-color);
+}
+
+#clearCompletedTasksButton:hover {
+    background-color: var(--neutral-color);
+}
+
+#noTasksText {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    color: var(--text-color);
+}
