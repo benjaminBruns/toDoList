@@ -43,23 +43,56 @@ function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+function sortTasks() {
+    const sortTasksDropdown = document.getElementById("sortTasksDropdown");
+    sortTasksDropdown.addEventListener("click", () => {
+        const selected = sortTasksDropdown.value;
+        console.log(selected);
+        if (selected == "alphabet") {
+            sortTasksByText();
+        } else if (selected == "complete") {
+            sortTasksByCompletion();
+        } else if (selected == "newest"){
+            sortTasksByNewest();
+        } else if (selected == "oldest") {
+            sortTasksByOldest();
+        }
+
+        saveTasks();
+        showTasks();
+        updateCheckboxes();
+    })
+}
 function sortTasksByText() {
-    if (tasks && tasks.length > 1) {
-        tasks.sort((a, b) => a.text.localeCompare(b.text));
-    }
-    return tasks;
+    tasks.sort((a, b) => a.text.localeCompare(b.text));
 }
 
-function addTask() {
-    newTaskButton.addEventListener("click", addTaskFunc);
+function sortTasksByCompletion() {
+    tasks.sort((a, b) => a.completed - b.completed);
 }
 
-function addTaskFunc() {
+function sortTasksByOldest() {
+    tasks.sort((a, b) => a.order - b.order);
+}
+
+function sortTasksByNewest() {
+    tasks.sort((a, b) => b.order - a.order);
+}
+
+function addTask(ord) {
+    newTaskButton.addEventListener("click", () => {
+        ord = addTaskFunc(ord);
+    });
+}
+
+function addTaskFunc(ord) {
+    console.log(ord);
     const taskText = newTaskInput.value;
     tasks.push({
         text: taskText,
         completed: false,
-        onScreen: true
+        onScreen: true,
+        order: ord
     });
     const taskItem = document.createElement("label");
     taskItem.className = "taskListItem";
@@ -73,6 +106,7 @@ function addTaskFunc() {
     showTasks();
     updateCheckboxes();
     newTaskInput.value = "";
+    return ord + 1;
 }
 
 function updateCheckboxes() {
@@ -94,17 +128,18 @@ function clearCompletedTasks() {
         showTasks();
         updateCheckboxes();
     });
-}
 
+}
 
 let tasks = [];
 loadTasks();
-tasks = sortTasksByText();
+let ord = tasks.length;
+sortTasks();
 showTasks();
 updateCheckboxes();
 console.log(tasks);
 saveTasks();
-
-addTask();
+ord = addTask(ord);
 
 clearCompletedTasks();
+

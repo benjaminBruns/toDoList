@@ -120,3 +120,20 @@ h1 {
     justify-content: center;
     color: var(--text-color);
 }
+
+#sortTasksContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sortTasksContainer label {
+    margin: 0.25rem;
+    font-size: 1.2rem;
+}
+
+#sortTasksDropdown {
+    margin: 0.25rem;
+    font-size: 1rem;
+}
+
