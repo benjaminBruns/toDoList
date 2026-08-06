@@ -8,8 +8,9 @@
     <body>
         <h1>To-do List</h1>
         <form id="taskInputForm" autocomplete="off">
-            <button id="taskAddButton">+</button>
-            <input type="text" id="taskInput" placeholder="Add a task...">
+            <button id="taskAddButton" class="taskInput">+</button>
+            <input type="text" class="taskInput" id="taskText" placeholder="Add a task...">
+            <input type="date" class="taskInput" id="taskDueDateInput">
         </form>
         <div id="taskListContainer">
 
@@ -22,8 +23,9 @@
             <select id="sortTasksDropdown">
                 <option value="alphabet">Alphabetically</option>
                 <option value="complete">Completed</option>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
+                <option value="newest">Newest Task Created</option>
+                <option value="oldest">Oldest Task Created</option>
+                <option value="dueDate">Due Date</option>
             </select>
         </div>
     <script src="script.js"></script>
