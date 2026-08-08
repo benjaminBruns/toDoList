@@ -88,10 +88,10 @@ function sortTasksByText() {
         const textB = b.text ? b.text.toLowerCase() : null;
 
         if (textA && textB) {
-            a.text.localeCompare(b.text);
+            return a.text.localeCompare(b.text);
         } else if (textA) {
             return -1;
-        } else {
+        } else{
             return 1;
         }
     });
@@ -190,13 +190,13 @@ function clearCompletedTasks() {
 
 let tasks = [];
 loadTasks();
-let ord = tasks.length;
+let nextOrder = tasks.length > 0 ? Math.max(...tasks.map(task => task.order)) + 1 : 0;
 attachSortingHandler();
 showTasks();
 attachCheckboxHandler();
 console.log(tasks);
 saveTasks();
-ord = addTask(ord);
+nextOrder = addTask(nextOrder);
 
 clearCompletedTasks();
 
