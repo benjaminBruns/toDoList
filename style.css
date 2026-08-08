@@ -28,24 +28,22 @@ h1 {
 
 #taskInputForm {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin: 1.25rem;
+    width: 100%;
 }
 
 .taskInput {
     padding: 0.5rem;
-    width: 25rem;
+    width: auto;
     height: 2rem;
     font-size: 1rem;
     background-color: #FFFFFF;
     color: var(--text-color);
     border: 1px solid var(--text-color);
     border-left: none;
-}
-
-#taskDueDateInput {
-    width: 10rem;
 }
 
 .taskInput:hover {
@@ -56,6 +54,13 @@ h1 {
     background-color: var(--neutral-color);
 }
 
+#taskText {
+    width: 30%;
+}
+#taskCategoryInput {
+    padding: 0rem 0.5rem;
+}
+
 #taskAddButton {
     padding: 0.5rem;
     width: auto;
@@ -63,8 +68,48 @@ h1 {
     color: var(--secondary-color);
     border: 1px solid var(--text-color);
 }
-
 #taskAddButton:hover {
+    background-color: var(--neutral-color);
+}
+
+#categoryInputForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1.25rem;
+    width: 100%;
+}
+
+.categoryInput {
+    padding: 0rem 0.5rem;
+    width: auto;
+    height: 2rem;
+    font-size: 1rem;
+    background-color: #FFFFFF;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-left: none;
+}
+#categoryNameInput {
+    width: 25%;
+}
+#categoryColorInput {
+    width: 3%;
+}
+#categoryAddButton {
+    padding: 0.5rem;
+    width: auto;
+    background-color: #FFFFFF;
+    color: var(--secondary-color);
+    border: 1px solid var(--text-color);
+}
+
+.categoryInput:hover {
+    background-color: var(--neutral-color);
+}
+
+.categoryInput:focus {
     background-color: var(--neutral-color);
 }
 
