@@ -15,11 +15,17 @@
                 <option value="none">Category</option>
             </select>
         </form>
-        <form id="categoryInputForm" autocomplete="off">
-            <button id="categoryAddButton" class="categoryInput">+</button>
-            <input type="color" class="categoryInput" id="categoryColorInput" value="#EAA9A9">
-            <input type="text" class="categoryInput" id="categoryNameInput" placeholder="Add a category...">
-        </form>
+        <div id="categoryForms">
+            <form id="categoryInputForm" autocomplete="off">
+                <button id="categoryAddButton" class="categoryInput">+</button>
+                <input type="color" class="categoryInput" id="categoryColorInput" value="#EAA9A9">
+                <input type="text" class="categoryInput" id="categoryNameInput" placeholder="Add a category...">
+            </form>
+            <form id="deleteCategoryForm" autocomplete="off">
+                <button id="categoryDeleteButton" class="categoryDelete">-</button>
+                <input type="text" id="categoryDeleteText" class="categoryDelete" placeholder="Delete a category...">
+            </form>
+        </div>
         <div id="taskListContainer">
 
         </div>

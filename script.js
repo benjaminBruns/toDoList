@@ -253,6 +253,41 @@ function addCategory() {
     saveCategories();
 }
 
+function attachDeleteCategoryHandler() {
+    const deleteButton = document.getElementById("categoryDeleteButton");
+    deleteButton.addEventListener("click", () => {
+        let cat = deleteCategory();
+        if (cat !== -1) {
+            updateTaskCategories(cat);
+        }
+    });
+}
+
+function deleteCategory() {
+    const deleteCatText = document.getElementById("categoryDeleteText").value.toLowerCase();
+    let i = -1;
+    categories.forEach(category => {
+        i = categories.findIndex(category => category.id === `cat-${deleteCatText}`);
+    })
+    if (i === -1) {
+        alert("Category not found. Please check spelling");
+        return -1;
+    }
+    let cat = categories[i];
+    categories.splice(i, 1);
+    renderCategories();
+    saveCategories();
+    return cat;
+}
+
+function updateTaskCategories(cat) {
+    tasks.forEach(task => {
+        if (task.category === cat) {
+            task.category = "none"
+        }
+    })
+}
+
 let tasks = [];
 let categories = [];
 console.log(categories);
@@ -270,6 +305,7 @@ saveCategories();
 console.log(categories);
 nextOrder = addTask(nextOrder);
 attachAddCategoryHandler();
+attachDeleteCategoryHandler();
 
 clearCompletedTasks();
 
