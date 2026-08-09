@@ -95,7 +95,7 @@ h1 {
     width: 25%;
 }
 #categoryColorInput {
-    width: 3%;
+    width: 50px;
 }
 #categoryAddButton {
     padding: 0.5rem;
@@ -154,7 +154,6 @@ h1 {
 
 .taskListItem.completed * {
     text-decoration: line-through;
-    color: var(--cross-color);
 }
 
 #clearCompletedTasksContainer {

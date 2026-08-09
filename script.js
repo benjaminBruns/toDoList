@@ -5,6 +5,7 @@ const newTaskButton = document.getElementById("taskAddButton");
 const taskList = document.getElementById("taskListContainer");
 const clearCompletedButton = document.getElementById("clearCompletedTasksButton");
 const newTaskDate = document.getElementById("taskDueDateInput");
+const newTaskCategory = document.getElementById("taskCategoryInput");
 
 
 function loadTasks() {
@@ -24,6 +25,10 @@ function showTasks() {
     tasks.forEach((task, index) => {
         const taskItem = document.createElement("label");
         taskItem.setAttribute("id", `task-${index}`);
+        // Copilot code snippet. Got stuck on changing background color of task item
+        const backColor = categories.find(category => category.id === task.category)?.color;
+        taskItem.style.backgroundColor = backColor;
+        // End of copilot code snippet
         if (task.completed) {
             taskItem.innerHTML = `
                 <input type="checkbox" class="taskCheckbox" id="checkbox-${index}" checked>
@@ -64,6 +69,8 @@ function callCorrectSortingMethod(sortingMethod) {
             sortTasksByOldest();
         } else if (sortingMethod == "dueDate") {
             sortTasksByDueDate();
+        } else if (sortingMethod == "category") {
+            sortTasksByCategory();
         }
 }
 
@@ -125,6 +132,21 @@ function sortTasksByDueDate() {
     });
 }
 
+function sortTasksByCategory() {
+    tasks.sort((a, b) => {
+        const catA = a.category ? a.category : null;
+        const catB = b.category ? b.category : null;
+
+        if (catA && catB) {
+            return catA.localeCompare(catB);
+        } else if (catA) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+}
+
 function addTask(ord) {
     newTaskButton.addEventListener("click", () => {
         ord = addTaskFunc(ord);
@@ -136,12 +158,14 @@ function addTaskFunc(ord) {
     console.log(ord);
     const taskText = newTaskInput.value;
     const taskDate = newTaskDate.value;
+    const taskCategory = newTaskCategory.value;
     tasks.push({
         text: taskText,
         completed: false,
         onScreen: true,
         order: ord,
-        date: taskDate
+        date: taskDate,
+        category: taskCategory
     });
     const taskItem = document.createElement("label");
     taskItem.className = "taskListItem";
@@ -188,15 +212,64 @@ function clearCompletedTasks() {
 
 }
 
+function loadCategories() {
+    categories = JSON.parse(localStorage.getItem("categories")) || [{
+        id: "cat-none",
+        name: "none",
+        color: "#FFFFFF"
+    }];
+}
+
+function renderCategories() {
+    const categorySelect = document.getElementById("taskCategoryInput");
+    categorySelect.innerHTML = "";
+    categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category.id;
+        option.textContent = category.name;
+        option.style.backgroundColor = category.color;
+        categorySelect.appendChild(option);
+    });
+}
+
+function saveCategories() {
+    localStorage.setItem("categories", JSON.stringify(categories));
+}
+
+function attachAddCategoryHandler() {
+    const addCategoryButton = document.getElementById("categoryAddButton");
+    addCategoryButton.addEventListener("click", addCategory);
+}
+
+function addCategory() {
+    const color = document.getElementById("categoryColorInput").value;
+    const name = document.getElementById("categoryNameInput").value;
+    const id = `cat-${name.toLowerCase()}`;
+    categories.push({
+        id: id,
+        name: name,
+        color: color
+    });
+    saveCategories();
+}
+
 let tasks = [];
+let categories = [];
+console.log(categories);
 loadTasks();
+loadCategories();
+console.log(categories);
 let nextOrder = tasks.length > 0 ? Math.max(...tasks.map(task => task.order)) + 1 : 0;
 attachSortingHandler();
 showTasks();
+renderCategories();
 attachCheckboxHandler();
 console.log(tasks);
 saveTasks();
+saveCategories();
+console.log(categories);
 nextOrder = addTask(nextOrder);
+attachAddCategoryHandler();
 
 clearCompletedTasks();
 

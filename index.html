@@ -12,13 +12,12 @@
             <input type="text" class="taskInput" id="taskText" placeholder="Add a task...">
             <input type="date" class="taskInput" id="taskDueDateInput">
             <select class="taskInput" id="taskCategoryInput">
-                <option value="">Category</option>
-                <option value="sample">Sample</option>
+                <option value="none">Category</option>
             </select>
         </form>
         <form id="categoryInputForm" autocomplete="off">
             <button id="categoryAddButton" class="categoryInput">+</button>
-            <input type="color" class="categoryInput" id="categoryColorInput" value="#FFFFFF">
+            <input type="color" class="categoryInput" id="categoryColorInput" value="#EAA9A9">
             <input type="text" class="categoryInput" id="categoryNameInput" placeholder="Add a category...">
         </form>
         <div id="taskListContainer">
@@ -35,6 +34,7 @@
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
                 <option value="dueDate">Due Date</option>
+                <option value="category">Category</option>
             </select>
         </div>
     <script src="script.js"></script>
