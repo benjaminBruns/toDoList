@@ -214,8 +214,8 @@ function clearCompletedTasks() {
 
 function loadCategories() {
     categories = JSON.parse(localStorage.getItem("categories")) || [{
-        id: "cat-none",
-        name: "none",
+        id: "cat-Category",
+        name: "Category",
         color: "#FFFFFF"
     }];
 }
@@ -283,7 +283,7 @@ function deleteCategory() {
 function updateTaskCategories(cat) {
     tasks.forEach(task => {
         if (task.category === cat) {
-            task.category = "none"
+            task.category = "Category"
         }
     })
 }
