@@ -244,6 +244,9 @@ function attachAddCategoryHandler() {
 function addCategory() {
     const color = document.getElementById("categoryColorInput").value;
     const name = document.getElementById("categoryNameInput").value;
+    if (name.length > 20) {
+        alert("Category name is too long. Must be under 20 characters");
+    }
     const id = `cat-${name.toLowerCase()}`;
     categories.push({
         id: id,
