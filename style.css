@@ -350,6 +350,7 @@ h1 {
         min-height: 44px;
         border-top: none;
         border-left: none;
+        min-width: 200px;
     }
 
     #categoryForms {
