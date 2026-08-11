@@ -13,6 +13,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     overflow-x: hidden;
 }
@@ -240,6 +241,56 @@ h1 {
     margin: 0.25rem;
     font-size: 1rem;
 }
+
+/* Because iPhone is weird */
+/* Code imported from Copilot to fix browser default styles */
+#taskDueDateInput,
+#taskCategoryInput,
+#categoryColorInput {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#taskDueDateInput {
+    background: #fff;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-left: none;
+    border-radius: 0;
+}
+
+#taskCategoryInput {
+    background: #fff;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-left: none;
+    border-radius: 0;
+}
+
+#categoryColorInput {
+    width: 50px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid var(--text-color);
+    border-radius: 0;
+    padding: 2px;
+}
+
+#categoryColorInput::-webkit-color-swatch-wrapper {
+    padding: 2px;
+}
+
+#categoryColorInput::-webkit-color-swatch {
+    border: 0;
+    border-radius: 0;
+}
+
+#categoryColorInput::-moz-color-swatch {
+    border: 0;
+    border-radius: 0;
+}
+
+/* End imported code */
 
 @media screen and (max-width: 430px) {
     body {
