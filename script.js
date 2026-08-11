@@ -213,11 +213,7 @@ function clearCompletedTasks() {
 }
 
 function loadCategories() {
-    categories = JSON.parse(localStorage.getItem("categories")) || [{
-        id: "cat-Category",
-        name: "Category",
-        color: "#FFFFFF"
-    }];
+    categories = JSON.parse(localStorage.getItem("categories")) || [];
 }
 
 function renderCategories() {
@@ -246,6 +242,7 @@ function addCategory() {
     const name = document.getElementById("categoryNameInput").value;
     if (name.length > 20) {
         alert("Category name is too long. Must be under 20 characters");
+        return;
     }
     const id = `cat-${name.toLowerCase()}`;
     categories.push({
