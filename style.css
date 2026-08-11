@@ -13,10 +13,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    overflow-x: hidden;
+}
 
 body {
     font-family: Times New Roman, Arial, sans-serif;
     background-color: var(--neutral-color);
+    overflow-x: hidden;
 }
 
 h1 {
@@ -28,10 +32,9 @@ h1 {
 
 #taskInputForm {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 1.25rem;
+    margin: 0rem 0rem 1.25rem 0rem;
     width: 100%;
 }
 
@@ -145,6 +148,7 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 #categoryInputForm, 
@@ -235,5 +239,150 @@ h1 {
 #sortTasksDropdown {
     margin: 0.25rem;
     font-size: 1rem;
+}
+
+@media screen and (max-width: 430px) {
+    body {
+        font-size: 16px;
+        background-color: var(--neutral-color);
+    }
+
+    h1 {
+        margin: 1rem 0.75rem;
+        font-size: 4rem;
+    }
+
+    #taskInputForm {
+        width: min(100%, 430px);
+        margin: 1rem auto;
+        padding: 0 0.75rem;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+    #taskInputForm > #taskText {
+        flex: 1 1 auto;
+        width: auto;
+        min-height: 44px;
+    }
+
+    #taskInputForm > #taskAddButton {
+        flex: 0 0 auto;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    #taskInputForm > #taskDueDateInput,
+    #taskInputForm > #taskCategoryInput {
+        flex: 1 1 auto;
+        min-height: 44px;
+        border-top: none;
+    }
+
+    #taskInputForm > #taskDueDateInput {
+        border-left: 1px solid var(--text-color);
+    }
+
+    #categoryForms {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #categoryInputForm,
+    #deleteCategoryForm {
+        width: min(95%, 430px);
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #deleteCategoryForm * {
+        border-top: none;
+    }
+
+    #categoryInputForm .categoryInput,
+    #deleteCategoryForm .categoryDelete {
+        min-height: 44px;
+    }
+
+    #categoryNameInput {
+        width: 100%;
+    }
+
+    #categoryColorInput {
+        width: 52px;
+        min-width: 52px;
+    }
+
+    #categoryDeleteText {
+        width: 100%;
+    }
+
+    #categoryAddButton,
+    #categoryDeleteButton {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    #taskListContainer {
+        margin: 1rem 0.75rem;
+    }
+
+    #noTasksText {
+        font-size: 3.25rem;
+        text-align: center;
+    }
+
+    .taskListItem {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0.75rem;
+    }
+
+    .taskCheckbox {
+        margin: 0;
+        transform: scale(1.15);
+        align-items: center;
+    }
+
+    .taskListItem .taskText {
+        flex: 1 1 65%;
+        font-size: 1rem;
+        line-height: 1;
+        word-break: break-word;
+    }
+
+    .taskListItem .taskDate {
+        margin-left: 0;
+        font-size: 0.8rem;
+    }
+
+    #clearCompletedTasksContainer {
+        margin-top: 0.5rem;
+    }
+
+    #clearCompletedTasksButton {
+        width: min(50%, 430px);
+        min-height: 44px;
+        margin: 1rem 0.75rem 0;
+    }
+
+    #sortTasksContainer {
+        flex-direction: row;
+        gap: 0.1rem;
+        margin-top: 1rem;
+    }
+
+    #sortTasksContainer label {
+        font-size: 1rem;
+    }
+
+    #sortTasksDropdown {
+        width: min(70%, 250px);
+        min-height: 44px;
+    }
 }
 

@@ -290,7 +290,6 @@ function updateTaskCategories(cat) {
 
 let tasks = [];
 let categories = [];
-console.log(categories);
 loadTasks();
 loadCategories();
 console.log(categories);
@@ -299,7 +298,6 @@ attachSortingHandler();
 showTasks();
 renderCategories();
 attachCheckboxHandler();
-console.log(tasks);
 saveTasks();
 saveCategories();
 console.log(categories);
