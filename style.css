@@ -334,23 +334,23 @@ h1 {
 
     #dueDateLabel,
     #categoryLabel {
-        display: flex;
+        display: inline-block;
         background-color: #FFFFFF;
         color: var(--text-color);
         border-left: 1px solid var(--text-color);
         border-bottom: 1px solid var(--text-color);
         padding: 0.25rem;
-        align-items: center;
-        width: 120px;
+        align-content: center;
+        width: 40%;
     }
 
     #taskInputForm > #taskCategoryInput,
     #taskInputForm > #taskDueDateInput {
-        flex: 1 1 auto;
+        display: inline-block;
         min-height: 44px;
         border-top: none;
         border-left: none;
-        min-width: 200px;
+        width: 60%;
     }
 
     #categoryForms {
