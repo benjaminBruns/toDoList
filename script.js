@@ -55,7 +55,7 @@ function saveTasks() {
 
 function changeTextColor(backColor, taskItem) {
     if (backColor === undefined) {
-        taskItem.style.backgroundColor = "#F4F4F5";
+        taskItem.style.backgroundColor = "#FFFFFF";
         taskItem.style.color = "#1E293B";
         taskItem.querySelectorAll(".taskText", ".taskDate").forEach(element => {
             element.style.color = "#1E293B";
