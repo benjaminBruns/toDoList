@@ -23,12 +23,13 @@ function showTasks() {
         taskListContainer.appendChild(taskListItem);
     }
     tasks.forEach((task, index) => {
-        const taskItem = document.createElement("label");
+        let taskItem = document.createElement("label");
         taskItem.setAttribute("id", `task-${index}`);
         // Copilot code snippet. Got stuck on changing background color of task item
-        const backColor = categories.find(category => category.id === task.category)?.color;
+        let backColor = categories.find(category => category.id === task.category)?.color;
         taskItem.style.backgroundColor = backColor;
         // End of copilot code snippet
+        backColor, taskItem = changeTextColor(backColor, taskItem);
         if (task.completed) {
             taskItem.innerHTML = `
                 <input type="checkbox" class="taskCheckbox" id="checkbox-${index}" checked>
@@ -50,6 +51,26 @@ function showTasks() {
 
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function changeTextColor(backColor, taskItem) {
+    if (backColor === undefined) {
+        taskItem.style.backgroundColor = "#F4F4F5";
+        taskItem.style.color = "#1E293B";
+        taskItem.querySelectorAll(".taskText", ".taskDate").forEach(element => {
+            element.style.color = "#1E293B";
+        })
+        return taskItem;
+    }    
+    let R = parseInt(backColor.slice(1, 3), 16);
+    let G = parseInt(backColor.slice(3, 5), 16);
+    let B = parseInt(backColor.slice(5, 7), 16);
+    const textColor = R * 0.299 + G * 0.587 + B * 0.114 <= 150 ? "#F4F4F5" : "#1E293B";
+    taskItem.style.color = textColor;
+    taskItem.querySelectorAll(".taskText", ".taskDate").forEach(element => {
+        element.style.color = textColor;
+    });
+    return taskItem;
 }
 
 function updateSortingMethod() {
@@ -219,11 +240,19 @@ function loadCategories() {
 function renderCategories() {
     const categorySelect = document.getElementById("taskCategoryInput");
     categorySelect.innerHTML = "";
+    const option = document.createElement("option");
+    option.setAttribute("class", "catBarItem");
+    option.value = "default";
+    option.textContent = "Default";
+    option.style.backgroundColor = "#FFFFFF";
+    categorySelect.appendChild(option);
     categories.forEach(category => {
         const option = document.createElement("option");
+        option.setAttribute("class", "catBarItem");
         option.value = category.id;
         option.textContent = category.name;
         option.style.backgroundColor = category.color;
+        changeTextColor(category.color, option);
         categorySelect.appendChild(option);
     });
 }
@@ -283,7 +312,7 @@ function deleteCategory() {
 function updateTaskCategories(cat) {
     tasks.forEach(task => {
         if (task.category === cat) {
-            task.category = "Category"
+            task.category = " "
         }
     })
 }

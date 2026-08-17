@@ -186,12 +186,10 @@ h1 {
 }
 
 .taskListItem .taskText {
-    color: var(--text-color);
     flex: 1;
 }
 
 .taskListItem .taskDate {
-    color: var(--text-color);
     margin-left: auto;
 }
 
