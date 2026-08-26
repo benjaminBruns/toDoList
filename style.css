@@ -47,7 +47,6 @@ h1 {
     background-color: #FFFFFF;
     color: var(--text-color);
     border: 1px solid var(--text-color);
-    border-left: none;
 }
 
 .taskInput:hover {
@@ -65,15 +64,20 @@ h1 {
     padding: 0rem 0.5rem;
 }
 
-#taskAddButton {
+#taskAddButtonDesktop {
     padding: 0.5rem;
     width: auto;
     background-color: #FFFFFF;
     color: var(--secondary-color);
     border: 1px solid var(--text-color);
+    border-left: none;
 }
-#taskAddButton:hover {
+#taskAddButtonDesktop:hover {
     background-color: var(--neutral-color);
+}
+
+#taskAddButtonMobile {
+    display: none;
 }
 
 #dueDateLabel,
@@ -324,10 +328,25 @@ h1 {
         min-height: 44px;
     }
 
-    #taskInputForm > #taskAddButton {
+    #taskAddButtonDesktop {
+        display: none;
+    }
+
+    #taskAddButtonMobile {
+        display: block;
+        width: auto;
+        background-color: #FFFFFF;
+        color: var(--secondary-color);
+        border: 1px solid var(--text-color);
+        border-right: none;
         flex: 0 0 auto;
         min-width: 44px;
         min-height: 44px;
+        padding: 0.5rem;
+    }
+
+    #taskAddButtonMobile:hover {
+        background-color: var(--neutral-color);
     }
 
     #dueDateLabel,

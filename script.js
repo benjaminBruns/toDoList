@@ -1,7 +1,8 @@
 "use strict";
 
 const newTaskInput = document.getElementById("taskText");
-const newTaskButton = document.getElementById("taskAddButton");
+const newTaskButtonDesktop = document.getElementById("taskAddButtonDesktop");
+const newTaskButtonMobile = document.getElementById("taskAddButtonMobile");
 const taskList = document.getElementById("taskListContainer");
 const clearCompletedButton = document.getElementById("clearCompletedTasksButton");
 const newTaskDate = document.getElementById("taskDueDateInput");
@@ -169,9 +170,12 @@ function sortTasksByCategory() {
 }
 
 function addTask(ord) {
-    newTaskButton.addEventListener("click", () => {
+    newTaskButtonDesktop.addEventListener("click", () => {
         ord = addTaskFunc(ord);
     });
+    newTaskButtonMobile.addEventListener("click", () => {
+        ord = addTaskFunc(ord);
+    })
 }
 
 function addTaskFunc(ord) {
